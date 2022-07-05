@@ -22,12 +22,10 @@ button_divisa.forEach((e)=>{
         const c = fetch(`https://api-divisas-ve.herokuapp.com/v1/${money}`)
         .then(res => res.json())
         .then(json => {
-            console.log(json);
             res.innerHTML = `La cotizacion del ${json.data.iso} es de = `+json.data.value+" Bs.D";
         })
         .catch(error => {
-            console.log(error);
-            res.innerHTML = error;
+            res.innerHTML = "Error inesperado intenta de nuevo";
         });
     });
 });
