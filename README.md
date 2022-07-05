@@ -11,7 +11,7 @@ cotizacion de monedas que se trabajan aqui en venezuela.
 Para poder usar este sistema solo debemos clonar el repositorio.
 
 ```bash
-  git clone https://github.com/andresmarquez02/Compresor.git
+  git clone https://github.com/andresmarquez02/api-divisas-vnzla.git
 ```
 ## Authors
 
