@@ -20,7 +20,7 @@ Tambien puedes ver los resultados
 
 https://andresmarquez02.github.io/api-divisas-vnzla/
 
-## Authors
+## Autor
 
 - [@andresmarquez](https://www.github.com/andresmarquez02)
 
