@@ -5,7 +5,7 @@ let res = document.querySelector("#response");
 
 res.innerHTML = response
 
-button_divisa.forEach((e)=>{
+button_divisa.forEach((e) => {
     e.addEventListener("click", () => {
         res.innerHTML = `
             <div class="flex justify-center">
@@ -18,14 +18,24 @@ button_divisa.forEach((e)=>{
                 </div>
             </div>
         `;
+
         let money = e.getAttribute("aria-value");
-        const c = fetch(`https://api-divisas-ve.herokuapp.com/v1/${money}`)
-        .then(res => res.json())
-        .then(json => {
-            res.innerHTML = `La cotizacion del ${json.data.iso} es de = `+json.data.value+" Bs.D";
-        })
-        .catch(error => {
-            res.innerHTML = "Error inesperado intenta de nuevo";
-        });
+        let myHeaders = new Headers();
+        myHeaders.append("apikey", "3Z06GMsYPMPTGnza2YEumu6hciMh7FNk");
+
+        let requestOptions = {
+            method: 'GET',
+            redirect: 'follow',
+            headers: myHeaders
+        };
+
+        fetch(`https://api.apilayer.com/exchangerates_data/convert?to=VES&from=${money}&amount=1`, requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                res.innerHTML = `La cotizacion del ${result.query.from} es de = ${parseFloat(result.result).toFixed(2)} ${result.query.to}`;
+            })
+            .catch(error => {
+                res.innerHTML = "Error inesperado intenta de nuevo";
+            });
     });
 });
